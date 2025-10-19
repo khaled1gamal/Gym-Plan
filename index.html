@@ -1,298 +1,542 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>خطة تدريب يومية تفاعلية</title>
-  <style>
-    :root{--bg:#f6f8fa;--card:#ffffff;--accent:#0b5cff;--muted:#6b7280}
-    *{box-sizing:border-box;font-family:Inter, system-ui, sans-serif}
-    body{margin:0;background:var(--bg);color:#111}
-    header{background:linear-gradient(90deg,#0b5cff22,transparent);padding:20px}
-    .container{max-width:980px;margin:18px auto;padding:12px}
-    .card{background:var(--card);border-radius:10px;padding:14px;margin-bottom:12px;box-shadow:0 6px 18px rgba(12,20,50,0.06)}
-    h1{margin:0 0 6px 0;font-size:20px}
-    .meta{display:flex;gap:12px;flex-wrap:wrap}
-    .meta div{background:#eef2ff;padding:8px 10px;border-radius:8px;font-size:14px}
-    .week{display:flex;gap:8px;margin-top:12px}
-    .daybtn{flex:1;padding:10px;border-radius:8px;text-align:center;cursor:pointer;border:1px solid transparent}
-    .daybtn.active{background:var(--accent);color:#fff}
-    .grid{display:grid;grid-template-columns:1fr 360px;gap:14px;margin-top:14px}
-    .section h3{margin:0 0 10px 0}
-    ul{padding-left:18px}
-    .exercise{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:8px;border:1px dashed #eee;margin-bottom:8px}
-    .muted{color:var(--muted);font-size:13px}
-    .controls{display:flex;gap:8px;align-items:center}
-    button.btn{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
-    button.ghost{background:#fff;border:1px solid #ddd;color:#111}
-    .small{font-size:13px;padding:6px 8px}
-    label.switch{display:inline-flex;align-items:center;gap:8px}
-    input[type=range]{width:160px}
-    .log{max-height:220px;overflow:auto;padding:8px;background:#fbfbff;border-radius:8px;border:1px solid #f0f0ff}
-    footer{font-size:13px;color:var(--muted);text-align:center;margin:18px}
-    @media (max-width:900px){.grid{grid-template-columns:1fr;}.container{padding:8px}}
-    @media print{header,footer,button{display:none}.container{max-width:100%}}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container">
-      <h1>خطة تدريب تفاعلية — تضخيم + صحة + دعم التستوستيرون</h1>
-      <div class="meta">
-        <div>العمر: <strong>33</strong></div>
-        <div>الوزن: <strong>79 كج</strong></div>
-        <div>الطول: <strong>173 سم</strong></div>
-        <div>الخبرة: <strong>متوسط</strong></div>
-        <div>أيام/أسبوع: <strong>5</strong></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>خطة تدريب يومية تفاعلية</title>
+    <style>
+      :root {
+        --bg: #f6f8fa;
+        --card: #ffffff;
+        --accent: #0b5cff;
+        --muted: #6b7280;
+      }
+      * {
+        box-sizing: border-box;
+        font-family: Inter, system-ui, sans-serif;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #111;
+      }
+      header {
+        background: linear-gradient(90deg, #0b5cff22, transparent);
+        padding: 15px;
+        margin-top: 15px;
+      }
+      .container {
+        max-width: 980px;
+        margin: 18px auto;
+        padding: 12px;
+      }
+      .card {
+        background: var(--card);
+        border-radius: 10px;
+        padding: 14px;
+        margin-bottom: 12px;
+        box-shadow: 0 6px 18px rgba(12, 20, 50, 0.06);
+      }
+      h1 {
+        margin: 0 0 6px 0;
+        font-size: 20px;
+      }
+      .meta {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .meta div {
+        background: #eef2ff;
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+      .week {
+        display: flex;
+        gap: .2px;
+        margin-top: 12px;
+      }
+      .daybtn {
+        flex: 1;
+        padding: 8px 5px;
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid transparent;
+      }
+      .daybtn.active {
+        background: var(--accent);
+        color: #fff;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 14px;
+        margin-top: 14px;
+      }
+      .section h3 {
+        margin: 0 0 10px 0;
+      }
+      ul {
+        padding-left: 18px;
+      }
+      .exercise {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px dashed #eee;
+        margin-bottom: 8px;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .controls {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      button.btn {
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      button.ghost {
+        background: #fff;
+        border: 1px solid #ddd;
+        color: #111;
+      }
+      .small {
+        font-size: 13px;
+        padding: 6px 8px;
+      }
+      label.switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      input[type="range"] {
+        width: 160px;
+      }
+      .log {
+        max-height: 220px;
+        overflow: auto;
+        padding: 8px;
+        background: #fbfbff;
+        border-radius: 8px;
+        border: 1px solid #f0f0ff;
+      }
+      footer {
+        font-size: 13px;
+        color: var(--muted);
+        text-align: center;
+        margin: 18px;
+      }
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .container {
+          padding: 8px;
+        }
+      }
+      @media print {
+        header,
+        footer,
+        button {
+          display: none;
+        }
+        .container {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>خطة تدريب تفاعلية — تضخيم + صحة + دعم التستوستيرون</h1>
+        <div class="meta">
+          <div>العمر: <strong>33</strong></div>
+          <div>الوزن: <strong>79 كج</strong></div>
+          <div>الطول: <strong>173 سم</strong></div>
+          <div>الخبرة: <strong>متوسط</strong></div>
+          <div>أيام/أسبوع: <strong>5</strong></div>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
-    <div class="card">
-      <div style="display:flex;justify-content: center;align-items:center;flex-wrap: wrap;gap:10px">
+    <main class="container">
+      <div class="card">
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+          "
+        >
+          <div style="text-align: center">
+            <strong>اختر اليوم</strong>
+            <div class="week" id="week"></div>
+          </div>
+          <div style="text-align: center">
+            <div class="muted">أدوات الحفظ والمشاركة</div>
+            <div
+              style="
+                margin-top: 8px;
+                display: flex;
+                gap: 8px;
+                justify-content: flex-end;
+              "
+            >
+              <button class="btn small" id="saveBtn">حفظ التقدم</button>
+              <button class="ghost small" id="resetBtn">إعادة ضبط</button>
+              <button class="ghost small" id="printBtn">طباعة</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
         <div>
-          <strong>اختر اليوم</strong>
-          <div class="week" id="week"></div>
-        </div>
-        <div style="text-align:left">
-          <div class="muted">أدوات الحفظ والمشاركة</div>
-          <div style="margin-top:8px;display:flex;gap:8px;justify-content:flex-end">
-            <button class="btn small" id="saveBtn">حفظ التقدم</button>
-            <button class="ghost small" id="resetBtn">إعادة ضبط</button>
-            <button class="ghost small" id="printBtn">طباعة</button>
+          <div class="card section">
+            <h3 id="dayTitle">تفاصيل اليوم</h3>
+            <p class="muted" id="dayNote">
+              سيظهر تمرين اليوم هنا — التمارين مُعدّلة لحماية الكتف الأيسر
+              المتألم.
+            </p>
+
+            <div id="exList" style="margin-top: 12px"></div>
+
+            <div
+              style="
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                margin-top: 12px;
+              "
+            >
+              <label class="switch"
+                >تقييم الألم الآن:
+                <input type="range" id="painRange" min="0" max="10" value="2" />
+                <span id="painVal">2</span></label
+              >
+              <button class="ghost small" id="logPain">سجل الألم</button>
+            </div>
+
+            <hr style="margin: 12px 0" />
+            <h3>تمارين علاجية للكتف (روتين يومي قصير)</h3>
+            <div class="muted">
+              نفّذ هذا الروتين بلطف يومياً — إذا زاد الألم توقف وراجع طبيب.
+            </div>
+            <div style="margin-top: 8px">
+              <ul>
+                <li class="exercise">
+                  <div>تمارين إرجاح (Pendulum) — 1–2 دقيقة</div>
+                </li>
+                <li class="exercise">
+                  <div>دوران داخلي/خارجي برباط مقاومة — 2 × 12</div>
+                </li>
+                <li class="exercise">
+                  <div>Cross-body stretch — 2 × 20s</div>
+                </li>
+                <li class="exercise">
+                  <div>Scapular retractions (مقوّي لوح الكتف) — 3 × 10</div>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="grid">
-      <div>
-        <div class="card section">
-          <h3 id="dayTitle">تفاصيل اليوم</h3>
-          <p class="muted" id="dayNote">سيظهر تمرين اليوم هنا — التمارين مُعدّلة لحماية الكتف الأيسر المتألم.</p>
-
-          <div id="exList" style="margin-top:12px"></div>
-
-          <div style="display:flex;gap:8px;align-items:center;margin-top:12px">
-            <label class="switch">تقييم الألم الآن: <input type="range" id="painRange" min="0" max="10" value="2"> <span id="painVal">2</span></label>
-            <button class="ghost small" id="logPain">سجل الألم</button>
-          </div>
-
-          <hr style="margin:12px 0">
-          <h3>تمارين علاجية للكتف (روتين يومي قصير)</h3>
-          <div class="muted">نفّذ هذا الروتين بلطف يومياً — إذا زاد الألم توقف وراجع طبيب.</div>
-          <div style="margin-top:8px">
-            <ul>
-              <li class="exercise"><div>تمارين إرجاح (Pendulum) — 1–2 دقيقة</div></li>
-              <li class="exercise"><div>دوران داخلي/خارجي برباط مقاومة — 2 × 12</div></li>
-              <li class="exercise"><div>Cross-body stretch — 2 × 20s</div></li>
-              <li class="exercise"><div>Scapular retractions (مقوّي لوح الكتف) — 3 × 10</div></li>
+          <div class="card section">
+            <h3>نظام تغذية يومي مبسّط</h3>
+            <div class="muted">
+              سعرات مستهدفة ~2700–2900 kcal — بروتين ~160 جم
+            </div>
+            <ul style="margin-top: 8px">
+              <li>فطور: 2 بيض + 3 بياض + شوفان + موز</li>
+              <li>سناك: زبادي يوناني + مكسرات</li>
+              <li>غداء: 250 جم دجاج + أرز/بطاطا + خضار</li>
+              <li>قبل التمرين: موز + قهوة</li>
+              <li>بعد التمرين: شيك بروتين + فواكه</li>
+              <li>عشاء: تونة/بيض + خبز أسمر + خضار</li>
             </ul>
           </div>
         </div>
 
-        <div class="card section">
-          <h3>نظام تغذية يومي مبسّط</h3>
-          <div class="muted">سعرات مستهدفة ~2700–2900 kcal — بروتين ~160 جم</div>
-          <ul style="margin-top:8px">
-            <li>فطور: 2 بيض + 3 بياض + شوفان + موز</li>
-            <li>سناك: زبادي يوناني + مكسرات</li>
-            <li>غداء: 250 جم دجاج + أرز/بطاطا + خضار</li>
-            <li>قبل التمرين: موز + قهوة</li>
-            <li>بعد التمرين: شيك بروتين + فواكه</li>
-            <li>عشاء: تونة/بيض + خبز أسمر + خضار</li>
-          </ul>
-        </div>
+        <aside>
+          <div class="card">
+            <h3>المخطط الأسبوعي</h3>
+            <div class="muted">عرض سريع لليوم المُختار</div>
+            <div style="margin-top: 12px" id="summary"></div>
+          </div>
+
+          <div class="card">
+            <h3>سجل التمرين</h3>
+            <div class="muted">
+              سجّل إنهاء المجموعات، ملاحظات عن الألم أو الوزن
+            </div>
+            <div class="log" id="log"></div>
+          </div>
+
+          <div class="card">
+            <h3>نصائح لرفع التستوستيرون طبيعياً</h3>
+            <ul>
+              <li>نوم 7–8 ساعات يوميًا</li>
+              <li>فيتامين D، زنك، ومغنيسيوم لو نقص</li>
+              <li>تمارين مقاومة مركبة (Squat, Row) تدريجيًا</li>
+              <li>تخفيف التوتر والأكل البسيط المعالج</li>
+            </ul>
+          </div>
+        </aside>
       </div>
 
-      <aside>
-        <div class="card">
-          <h3>المخطط الأسبوعي</h3>
-          <div class="muted">عرض سريع لليوم المُختار</div>
-          <div style="margin-top:12px" id="summary"></div>
-        </div>
+      <footer class="muted">
+        الخطة مُعدّة خصيصًا لاحتياجك مع مراعاة التهاب أوتار في الكتف الأيسر —
+        راجع أخصائي إذا زاد الألم.
+      </footer>
+    </main>
 
-        <div class="card">
-          <h3>سجل التمرين</h3>
-          <div class="muted">سجّل إنهاء المجموعات، ملاحظات عن الألم أو الوزن</div>
-          <div class="log" id="log"></div>
-        </div>
+    <script>
+      // بيانات الخطة الأساسية
+      const plan = {
+        monday: {
+          title: "صدر + ترايسبس (تعديلات: لا ضغط فوق الرأس)",
+          note: "تجنب باربل بنش الثقيل، استخدم Chest Press خفيف وتمارين مائلة بدمبل خفيف",
+          exercises: [
+            { name: "Chest Press (machine)", sets: "4 × 8-12" },
+            { name: "Incline DB Press (خفيف)", sets: "3 × 8-10" },
+            { name: "Cable Fly (نطاق محدود)", sets: "3 × 12" },
+            { name: "Triceps Pushdown", sets: "3 × 10-12" },
+          ],
+        },
+        tuesday: {
+          title: "ظهر + بايسبس",
+          note: "اعتمد سحب بالكابل ولاتس بدلاً من صفوف بأوزان ثقيلة",
+          exercises: [
+            { name: "Lat Pulldown", sets: "4 × 8-12" },
+            { name: "Seated Cable Row", sets: "3 × 8-12" },
+            { name: "One-arm DB Row (خفيف)", sets: "3 × 8-10" },
+            { name: "Barbell Curl", sets: "3 × 8-10" },
+          ],
+        },
+        wednesday: {
+          title: "راحة + علاج كتف + كارديو خفيف",
+          note: "تمارين علاجية + مشي أو دراجة 30 دقيقة",
+          exercises: [
+            { name: "تمارين علاجية (انظر الأسفل)", sets: "10–15 دقيقة" },
+            { name: "كارديو خفيف", sets: "30 دقيقة" },
+          ],
+        },
+        thursday: {
+          title: "أرجل كاملة",
+          note: "تركيز على شكل الحركة وليس على الوزن الثقيل",
+          exercises: [
+            { name: "Squat (خفيف–متوسط)", sets: "4 × 6-10" },
+            { name: "Leg Press", sets: "3 × 10" },
+            { name: "Leg Curl", sets: "3 × 10-12" },
+            { name: "Calf Raises", sets: "4 × 12-15" },
+          ],
+        },
+        friday: {
+          title: "أكتاف + معدة (تعديلات للكتف)",
+          note: "تجنّب Overhead Press المباشر — استخدم رفع جانبي خفيف وتمارين أمامية محدودة",
+          exercises: [
+            { name: "Lateral Raises (خفيف)", sets: "4 × 12" },
+            { name: "Front Raises (خفيف)", sets: "3 × 10" },
+            { name: "Plank", sets: "3 × 30-60s" },
+          ],
+        },
+        saturday: {
+          title: "كارديو + مرونة",
+          note: "تحريك الجسم وتمارين Mobility",
+          exercises: [
+            { name: "مشي/جري خفيف", sets: "20–30 دقيقة" },
+            { name: "Stretching & Mobility", sets: "15 دقيقة" },
+          ],
+        },
+        sunday: {
+          title: "راحة",
+          note: "استشفاء كامل",
+          exercises: [],
+        },
+      };
 
-        <div class="card">
-          <h3>نصائح لرفع التستوستيرون طبيعياً</h3>
-          <ul>
-            <li>نوم 7–8 ساعات يوميًا</li>
-            <li>فيتامين D، زنك، ومغنيسيوم لو نقص</li>
-            <li>تمارين مقاومة مركبة (Squat, Row) تدريجيًا</li>
-            <li>تخفيف التوتر والأكل البسيط المعالج</li>
-          </ul>
-        </div>
+      const days = [
+        "sunday",
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+      ];
 
-      </aside>
-    </div>
+      // init UI
+      const weekEl = document.getElementById("week");
+      const exList = document.getElementById("exList");
+      const dayTitle = document.getElementById("dayTitle");
+      const dayNote = document.getElementById("dayNote");
+      const summary = document.getElementById("summary");
+      const log = document.getElementById("log");
+      const painRange = document.getElementById("painRange");
+      const painVal = document.getElementById("painVal");
 
-    <footer class="muted">الخطة مُعدّة خصيصًا لاحتياجك مع مراعاة التهاب أوتار في الكتف الأيسر — راجع أخصائي إذا زاد الألم.</footer>
-  </main>
+      let selected = "monday";
 
-  <script>
-    // بيانات الخطة الأساسية
-    const plan = {
-      monday: {
-        title: 'صدر + ترايسبس (تعديلات: لا ضغط فوق الرأس)',
-        note: 'تجنب باربل بنش الثقيل، استخدم Chest Press خفيف وتمارين مائلة بدمبل خفيف',
-        exercises: [
-          {name:'Chest Press (machine)', sets:'4 × 8-12'},
-          {name:'Incline DB Press (خفيف)', sets:'3 × 8-10'},
-          {name:'Cable Fly (نطاق محدود)', sets:'3 × 12'},
-          {name:'Triceps Pushdown', sets:'3 × 10-12'}
-        ]
-      },
-      tuesday:{
-        title:'ظهر + بايسبس',
-        note:'اعتمد سحب بالكابل ولاتس بدلاً من صفوف بأوزان ثقيلة',
-        exercises:[
-          {name:'Lat Pulldown',sets:'4 × 8-12'},
-          {name:'Seated Cable Row',sets:'3 × 8-12'},
-          {name:'One-arm DB Row (خفيف)',sets:'3 × 8-10'},
-          {name:'Barbell Curl',sets:'3 × 8-10'}
-        ]
-      },
-      wednesday:{
-        title:'راحة + علاج كتف + كارديو خفيف',
-        note:'تمارين علاجية + مشي أو دراجة 30 دقيقة',
-        exercises:[{name:'تمارين علاجية (انظر الأسفل)',sets:'10–15 دقيقة'},{name:'كارديو خفيف',sets:'30 دقيقة'}]
-      },
-      thursday:{
-        title:'أرجل كاملة',
-        note:'تركيز على شكل الحركة وليس على الوزن الثقيل',
-        exercises:[{name:'Squat (خفيف–متوسط)',sets:'4 × 6-10'},{name:'Leg Press',sets:'3 × 10'},{name:'Leg Curl',sets:'3 × 10-12'},{name:'Calf Raises',sets:'4 × 12-15'}]
-      },
-      friday:{
-        title:'أكتاف + معدة (تعديلات للكتف)',
-        note:'تجنّب Overhead Press المباشر — استخدم رفع جانبي خفيف وتمارين أمامية محدودة',
-        exercises:[{name:'Lateral Raises (خفيف)',sets:'4 × 12'},{name:'Front Raises (خفيف)',sets:'3 × 10'},{name:'Plank',sets:'3 × 30-60s'}]
-      },
-      saturday:{
-        title:'كارديو + مرونة',
-        note:'تحريك الجسم وتمارين Mobility',
-        exercises:[{name:'مشي/جري خفيف',sets:'20–30 دقيقة'},{name:'Stretching & Mobility',sets:'15 دقيقة'}]
-      },
-      sunday:{
-        title:'راحة',note:'استشفاء كامل',exercises:[]}
-    }
-
-    const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
-
-    // init UI
-    const weekEl = document.getElementById('week')
-    const exList = document.getElementById('exList')
-    const dayTitle = document.getElementById('dayTitle')
-    const dayNote = document.getElementById('dayNote')
-    const summary = document.getElementById('summary')
-    const log = document.getElementById('log')
-    const painRange = document.getElementById('painRange')
-    const painVal = document.getElementById('painVal')
-
-    let selected = 'monday'
-
-    function makeWeek(){
-      // show 7 buttons (Sun-Sat) but label Arabic short
-      const labels = ['أحد','اثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت']
-      weekEl.innerHTML = ''
-      for(let i=0;i<7;i++){
-        const d = days[i]
-        const btn = document.createElement('div')
-        btn.className = 'daybtn '+(d===selected? 'active':'')
-        btn.textContent = labels[i]
-        btn.onclick = ()=>{selected=d;renderDay();makeWeek()}
-        weekEl.appendChild(btn)
+      function makeWeek() {
+        // show 7 buttons (Sun-Sat) but label Arabic short
+        const labels = [
+          "أحد",
+          "اثنين",
+          "ثلاثاء",
+          "أربعاء",
+          "خميس",
+          "جمعة",
+          "سبت",
+        ];
+        weekEl.innerHTML = "";
+        for (let i = 0; i < 7; i++) {
+          const d = days[i];
+          const btn = document.createElement("div");
+          btn.className = "daybtn " + (d === selected ? "active" : "");
+          btn.textContent = labels[i];
+          btn.onclick = () => {
+            selected = d;
+            renderDay();
+            makeWeek();
+          };
+          weekEl.appendChild(btn);
+        }
       }
-    }
 
-    function renderDay(){
-      const data = plan[selected]
-      dayTitle.textContent = (data && data.title) || 'راحة'
-      dayNote.textContent = (data && data.note) || ''
-      exList.innerHTML = ''
-      if(data && data.exercises.length){
-        data.exercises.forEach((ex,idx)=>{
-          const div = document.createElement('div')
-          div.className='exercise'
-          div.innerHTML = `<div><strong>${ex.name}</strong><div class="muted">${ex.sets}</div></div>`
-          const controls = document.createElement('div')
-          controls.className = 'controls'
-          const done = document.createElement('button')
-          done.className='ghost small'
-          done.textContent='تم' 
-          done.onclick = ()=>{addLog(`${data.title} - ${ex.name} ✅`)}
-          const noteBtn = document.createElement('button')
-          noteBtn.className='btn small'
-          noteBtn.textContent='سجل ملاحظة'
-          noteBtn.onclick = ()=>{const t = prompt('اكتب ملاحظة عن التمرين (وزن / ألم / ملاحظة)'); if(t) addLog(`${data.title} - ${ex.name} - ملاحظة: ${t}`)}
-          controls.appendChild(done);controls.appendChild(noteBtn)
-          div.appendChild(controls)
-          exList.appendChild(div)
-        })
-      } else {
-        exList.innerHTML = '<div class="muted">لا تمارين اليوم. استرح واستشفِ.</div>'
+      function renderDay() {
+        const data = plan[selected];
+        dayTitle.textContent = (data && data.title) || "راحة";
+        dayNote.textContent = (data && data.note) || "";
+        exList.innerHTML = "";
+        if (data && data.exercises.length) {
+          data.exercises.forEach((ex, idx) => {
+            const div = document.createElement("div");
+            div.className = "exercise";
+            div.innerHTML = `<div><strong>${ex.name}</strong><div class="muted">${ex.sets}</div></div>`;
+            const controls = document.createElement("div");
+            controls.className = "controls";
+            const done = document.createElement("button");
+            done.className = "ghost small";
+            done.textContent = "تم";
+            done.onclick = () => {
+              addLog(`${data.title} - ${ex.name} ✅`);
+            };
+            const noteBtn = document.createElement("button");
+            noteBtn.className = "btn small";
+            noteBtn.textContent = "سجل ملاحظة";
+            noteBtn.onclick = () => {
+              const t = prompt("اكتب ملاحظة عن التمرين (وزن / ألم / ملاحظة)");
+              if (t) addLog(`${data.title} - ${ex.name} - ملاحظة: ${t}`);
+            };
+            controls.appendChild(done);
+            controls.appendChild(noteBtn);
+            div.appendChild(controls);
+            exList.appendChild(div);
+          });
+        } else {
+          exList.innerHTML =
+            '<div class="muted">لا تمارين اليوم. استرح واستشفِ.</div>';
+        }
+        renderSummary();
       }
-      renderSummary()
-    }
 
-    function renderSummary(){
-      summary.innerHTML = ''
-      for(const key of ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']){
-        const d = plan[key]
-        const el = document.createElement('div')
-        el.style.padding='8px 0'
-        el.innerHTML = `<strong>${(d.title||'راحة')}</strong><div class='muted'>${d.note || ''}</div>`
-        if(selected===key) el.style.background='#fbfbff'
-        summary.appendChild(el)
+      function renderSummary() {
+        summary.innerHTML = "";
+        for (const key of [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday",
+        ]) {
+          const d = plan[key];
+          const el = document.createElement("div");
+          el.style.padding = "8px 0";
+          el.innerHTML = `<strong>${
+            d.title || "راحة"
+          }</strong><div class='muted'>${d.note || ""}</div>`;
+          if (selected === key) el.style.background = "#fbfbff";
+          summary.appendChild(el);
+        }
       }
-    }
 
-    function addLog(text){
-      const now = new Date().toLocaleString('ar-EG')
-      const entry = `${now} — ${text}`
-      const arr = JSON.parse(localStorage.getItem('plan_log')||'[]')
-      arr.unshift(entry)
-      localStorage.setItem('plan_log',JSON.stringify(arr.slice(0,200)))
-      renderLog()
-    }
+      function addLog(text) {
+        const now = new Date().toLocaleString("ar-EG");
+        const entry = `${now} — ${text}`;
+        const arr = JSON.parse(localStorage.getItem("plan_log") || "[]");
+        arr.unshift(entry);
+        localStorage.setItem("plan_log", JSON.stringify(arr.slice(0, 200)));
+        renderLog();
+      }
 
-    function renderLog(){
-      const arr = JSON.parse(localStorage.getItem('plan_log')||'[]')
-      log.innerHTML = arr.map(l=>`<div style="padding:6px;border-bottom:1px solid #f3f4f8">${l}</div>`).join('')
-    }
+      function renderLog() {
+        const arr = JSON.parse(localStorage.getItem("plan_log") || "[]");
+        log.innerHTML = arr
+          .map(
+            (l) =>
+              `<div style="padding:6px;border-bottom:1px solid #f3f4f8">${l}</div>`
+          )
+          .join("");
+      }
 
-    // pain logging
-    painRange.oninput = ()=>{painVal.textContent = painRange.value}
-    document.getElementById('logPain').onclick = ()=>{
-      const p = painRange.value
-      addLog(`تقييم الألم: ${p} / 10 — يوم: ${selected}`)
-      alert('تم تسجيل ألمك')
-    }
+      // pain logging
+      painRange.oninput = () => {
+        painVal.textContent = painRange.value;
+      };
+      document.getElementById("logPain").onclick = () => {
+        const p = painRange.value;
+        addLog(`تقييم الألم: ${p} / 10 — يوم: ${selected}`);
+        alert("تم تسجيل ألمك");
+      };
 
-    // save and reset
-    document.getElementById('saveBtn').onclick = ()=>{
-      // save selected day and pain
-      const state = {selected, pain:painRange.value}
-      localStorage.setItem('plan_state',JSON.stringify(state))
-      alert('تم الحفظ محليًا')
-    }
-    document.getElementById('resetBtn').onclick = ()=>{
-      if(confirm('هل تريد حذف السجل وإعادة الضبط؟')){localStorage.removeItem('plan_log');localStorage.removeItem('plan_state');renderLog();alert('تمت إعادة الضبط')}}
-    document.getElementById('printBtn').onclick = ()=>window.print()
+      // save and reset
+      document.getElementById("saveBtn").onclick = () => {
+        // save selected day and pain
+        const state = { selected, pain: painRange.value };
+        localStorage.setItem("plan_state", JSON.stringify(state));
+        alert("تم الحفظ محليًا");
+      };
+      document.getElementById("resetBtn").onclick = () => {
+        if (confirm("هل تريد حذف السجل وإعادة الضبط؟")) {
+          localStorage.removeItem("plan_log");
+          localStorage.removeItem("plan_state");
+          renderLog();
+          alert("تمت إعادة الضبط");
+        }
+      };
+      document.getElementById("printBtn").onclick = () => window.print();
 
-    // load state
-    function loadState(){
-      const state = JSON.parse(localStorage.getItem('plan_state')||'null')
-      if(state){selected = state.selected || selected; painRange.value = state.pain || painRange.value; painVal.textContent = painRange.value}
-    }
+      // load state
+      function loadState() {
+        const state = JSON.parse(localStorage.getItem("plan_state") || "null");
+        if (state) {
+          selected = state.selected || selected;
+          painRange.value = state.pain || painRange.value;
+          painVal.textContent = painRange.value;
+        }
+      }
 
-    // init
-    loadState();makeWeek();renderDay();renderLog()
-  </script>
-</body>
+      // init
+      loadState();
+      makeWeek();
+      renderDay();
+      renderLog();
+    </script>
+  </body>
 </html>
